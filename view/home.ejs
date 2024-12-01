@@ -9,7 +9,7 @@
     <h1>Welcome to Home page of the website</h1>
     <h2>If you are a new user then please visit http://localhost:3001/signup</h2>
 <% if (locals.id) { %>
- <p>Short url is http://localhost:3001/url/<%= id %></p>
+ <p>Short urlid is <%= id %></p>
 <% } %>
     <h3>Generate Your short url</h3>
     <form action="/url" method="post">
@@ -19,9 +19,10 @@
 <% if (locals.allshorturl) { %>
  <ol>
     <% allshorturl.forEach(ShortURL => { %>
-     <li>Short ID is <a href="http://localhost:3001/url/<%= ShortURL.shortid %>" target="_blank"><strong><%= ShortURL.shortid %></strong></a> which points towards <strong><%= ShortURL.redirecturl %></strong> and is it visitied <%= ShortURL.viewhistory.length %></li>
+     <li>Short ID is<a href="http://localhost:3001/url/<%= ShortURL.shortid %>" target="_blank"><strong><%= ShortURL.shortid %></strong></a> which points towards <strong><%= ShortURL.redirecturl %></strong> and is it visitied <%= ShortURL.viewhistory.length %></li>
     <% }) %>
  </ol >
 <% } %>
 </body>
 </html>
+ 
