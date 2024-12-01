@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Welcome to Home page of the website</h1>
+    <h2>If you are a new user then please visit http://localhost:3001/signup</h2>
+<% if (locals.id) { %>
+ <p>Short url is http://localhost:3001/url/<%= id %></p>
+<% } %>
+    <h3>Generate Your short url</h3>
+    <form action="/url" method="post">
+        <input type="text" name="redirecturl" id="redirecturl" placeholder="Enter Your URL">
+        <button type="submit">Generate</button>
+    </form>
+<% if (locals.allshorturl) { %>
+ <ol>
+    <% allshorturl.forEach(ShortURL => { %>
+     <li>Short ID is <a href="http://localhost:3001/url/<%= ShortURL.shortid %>" target="_blank"><strong><%= ShortURL.shortid %></strong></a> which points towards <strong><%= ShortURL.redirecturl %></strong> and is it visitied <%= ShortURL.viewhistory.length %></li>
+    <% }) %>
+ </ol >
+<% } %>
+</body>
+</html>
